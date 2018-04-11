@@ -1,0 +1,26 @@
+<h1> Results</h1>
+<hr>
+
+<div *ngIf="heroesArr.length == 0" class="columns result-column">
+  <div class="col-md-12">
+    <div class="alert alert-info" role="alert">
+     "{{ searchValue }}" no existe fistro! Como vas a encontrar algo con ese jetaso??!!
+    </div>
+  </div>
+  <img class="result-column-img" src="assets/img/chiquito-no-results.png" alt="chiquito">
+</div>
+<div class="card-columns">
+
+  <div class="card animated fadeIn fast" *ngFor="let hero of heroesArr; let i = index">
+    <img class="card-img-top" [src]="hero.img" [alt]="hero.nombre">
+    <div class="card-body">
+      <h5 class="card-title">{{ hero.nombre }}</h5>
+      <p class="card-text">{{ hero.bio }}</p>
+      <p class="card-text">
+        <small class="text-muted">{{ hero.aparicion }}</small>
+      </p>
+      <button type="button" (click)="seeMore(i)" class="btn btn-outline-dark btn-block">See more...</button>
+      <!--<a [routerLink]="['/hero',i]" class="btn btn-outline-dark">See more link...</a>-->
+    </div>
+
+  </div>
